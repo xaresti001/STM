@@ -33,7 +33,6 @@ public class User {
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "task_id")
     )
-
     private Set<Task> tasks = new HashSet<>();
 
 }
