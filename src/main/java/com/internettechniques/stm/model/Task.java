@@ -23,16 +23,26 @@ public class Task {
     private String title;
     private String description;
     private LocalDateTime dateAdded = LocalDateTime.now();
-    private enum type{
+    public enum Type{
         TASK,
         BUG,
         FEATURE
     }
-    private enum status{
+    public enum Status{
         NEW,
         IN_PROGRESS,
         DONE
     }
+    private Type type;
+    private Status status;
+
+    @ManyToOne
+    @JoinTable( // association (relation) table
+            name = "user_to_tasks",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "task_id")
+    )
+    private User user;
 
 
 }

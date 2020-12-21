@@ -7,8 +7,6 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.HashSet;
-import java.util.Set;
 
 @Entity
 @Getter
@@ -27,6 +25,7 @@ public class User {
     private boolean status;
     private LocalDateTime registrationDateTime = LocalDateTime.now();
 
+    /*
     @OneToMany
     @JoinTable( // association (relation) table
             name = "user_to_tasks",
@@ -34,5 +33,7 @@ public class User {
             inverseJoinColumns = @JoinColumn(name = "task_id")
     )
     private Set<Task> tasks = new HashSet<>();
+
+     */
 
 }
