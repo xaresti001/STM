@@ -1,5 +1,6 @@
 package com.internettechniques.stm.controller;
 
+import com.internettechniques.stm.model.Task;
 import com.internettechniques.stm.model.User;
 import com.internettechniques.stm.service.TaskService;
 import com.internettechniques.stm.service.UserService;
@@ -26,7 +27,7 @@ public class MainController {
         return userService.getAllUsers();
     }
 
-    @PostMapping("/user/register")
+    @PostMapping("/user/createUser")
     public User createNewUser(
             @RequestParam("name") String name,
             @RequestParam("lastName") String lastName,
@@ -39,7 +40,7 @@ public class MainController {
     }
 
     @GetMapping("/user/findById")
-    public User findById(
+    public User findUserById(
             @RequestParam("userId") int userId
     ){
         return userService.findUserById(userId);
@@ -54,9 +55,49 @@ public class MainController {
     }
 
     @DeleteMapping("/user/deleteUser")
-    public boolean deleteUser(
+    public boolean deleteUserById(
             @RequestParam("userId") int userId
     ){
         return userService.deleteUserById(userId);
     }
+
+    @GetMapping("/task/getAllTasks")
+    public List<Task> getAllTasks(){
+        return taskService.getAllTasks();
+    }
+
+    @PostMapping("/task/createTask")
+    public Task createTaskByUser(
+            @RequestParam("title") String title,
+            @RequestParam("description") String description,
+            @RequestParam("type") Task.Type type,
+            @RequestParam("status") Task.Status status,
+            @RequestParam("userId") int userId
+    ){
+        Task task = new Task(title,description,type,status);
+        return taskService.addTaskByUser(task, userId);
+    }
+
+    @GetMapping("/task/findById")
+    public Task findTaskById(
+            @RequestParam("taskId") int taskId
+    ){
+        return taskService.findTaskById(taskId);
+    }
+
+    @PutMapping("/task/updateStatus")
+    public boolean updateTaskStatus(
+            @RequestParam("taskId") int taskId,
+            @RequestParam("newStatus") Task.Status newStatus
+    ){
+        return taskService.updateTaskStatus(taskId, newStatus);
+    }
+
+    @DeleteMapping("/task/deleteTask")
+    public boolean deleteTaskById(
+            @RequestParam("taskId") int taskId
+    ){
+        return taskService.deleteTaskById(taskId);
+    }
+
 }
