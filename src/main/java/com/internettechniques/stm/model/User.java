@@ -25,6 +25,7 @@ public class User {
     private boolean status;
     private LocalDateTime registrationDateTime = LocalDateTime.now();
 
+
     /*
     @OneToMany
     @JoinTable( // association (relation) table
