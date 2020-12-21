@@ -5,9 +5,7 @@ import com.internettechniques.stm.service.TaskService;
 import com.internettechniques.stm.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -38,5 +36,27 @@ public class MainController {
     ){
         User newUser = new User(name, lastName, email, password, status);
         return userService.addUser(newUser);
+    }
+
+    @GetMapping("/user/findById")
+    public User findById(
+            @RequestParam("userId") int userId
+    ){
+        return userService.findUserById(userId);
+    }
+
+    @PutMapping("/user/updateStatus")
+    public boolean updateUserStatus(
+            @RequestParam("userId") int userId,
+            @RequestParam("newStatus") boolean newStatus
+    ){
+        return userService.updateUserStatus(userId,newStatus);
+    }
+
+    @DeleteMapping("/user/deleteUser")
+    public boolean deleteUser(
+            @RequestParam("userId") int userId
+    ){
+        return userService.deleteUserById(userId);
     }
 }
