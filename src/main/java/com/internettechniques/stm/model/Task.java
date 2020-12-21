@@ -1,17 +1,13 @@
 package com.internettechniques.stm.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
 
 @Entity
-@Getter
-@Setter
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
 
@@ -44,5 +40,10 @@ public class Task {
     )
     private User user;
 
-
+    public Task(String title, String description, Type type, Status status) {
+        this.title = title;
+        this.description = description;
+        this.type = type;
+        this.status = status;
+    }
 }

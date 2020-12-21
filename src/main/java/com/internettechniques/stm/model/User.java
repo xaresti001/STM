@@ -37,4 +37,11 @@ public class User {
 
      */
 
+    public User(String name, String lastName, String email, String password, boolean status) {
+        this.name = name;
+        this.lastName = lastName;
+        this.email = email;
+        this.password = password;
+        this.status = status;
+    }
 }
