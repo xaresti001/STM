@@ -22,6 +22,8 @@ public class MainController {
     }
 
 
+    // USER REQUESTS //
+
     @GetMapping("/user/getAllUsers")
     public List<User> getAllUsers(){
         return userService.getAllUsers();
@@ -60,6 +62,8 @@ public class MainController {
     ){
         return userService.deleteUserById(userId);
     }
+
+    // TASK REQUESTS //
 
     @GetMapping("/task/getAllTasks")
     public List<Task> getAllTasks(){
