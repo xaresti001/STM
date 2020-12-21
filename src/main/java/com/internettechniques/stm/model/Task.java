@@ -34,12 +34,5 @@ public class Task {
         DONE
     }
 
-    @ManyToOne
-    @JoinTable( // association (relation) table
-            name = "user_to_tasks",
-            joinColumns = @JoinColumn(name = "task_id"),
-            inverseJoinColumns = @JoinColumn(name = "user_id")
-    )
-    private User user;
 
 }
