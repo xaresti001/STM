@@ -1,6 +1,8 @@
 package com.internettechniques.stm.model;
 
 import lombok.*;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -33,6 +35,7 @@ public class Task {
     private Status status;
 
     @ManyToOne
+    @OnDelete(action = OnDeleteAction.CASCADE)
     /*
     @JoinTable( // association (relation) table
             name = "user_to_tasks",
