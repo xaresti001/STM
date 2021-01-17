@@ -33,11 +33,13 @@ public class Task {
     private Status status;
 
     @ManyToOne
+    /*
     @JoinTable( // association (relation) table
             name = "user_to_tasks",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "task_id")
     )
+    */
     private User user;
 
     public Task(String title, String description, Type type, Status status) {
